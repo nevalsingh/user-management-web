@@ -21,7 +21,6 @@ function CaptureForm() {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isUsernameValid, setIsUsernameValid] = useState(false);
 
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -52,7 +51,7 @@ function CaptureForm() {
         <UsernameInput
           value={formData.username}
           onChange={handleChange}
-          setIsValid = {setIsUsernameValid}
+          setIsValid={setIsUsernameValid}
         />
         <TextField
           label="Password"

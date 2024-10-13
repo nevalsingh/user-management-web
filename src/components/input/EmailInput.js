@@ -10,16 +10,15 @@ const EmailInput = ({ value, onChange, setIsValid, required = true }) => {
     return regex.test(String(email).toLowerCase());
   };
 
-
   useEffect(() => {
     if (required && !validateEmail(value)) {
       setError(true);
       setHelperText('Please enter a valid email address.');
-      setIsValid(false); 
+      setIsValid(false);
     } else {
       setError(false);
       setHelperText('');
-      setIsValid(true); 
+      setIsValid(true);
     }
   }, [value, required, setIsValid]);
 

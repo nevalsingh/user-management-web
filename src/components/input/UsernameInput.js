@@ -14,11 +14,11 @@ const UsernameInput = ({ value, onChange, setIsValid, required = true }) => {
     if (required && !validateUsername(value)) {
       setError(true);
       setHelperText('Please enter a valid username.');
-      setIsValid(false); 
+      setIsValid(false);
     } else {
       setError(false);
       setHelperText('');
-      setIsValid(true); 
+      setIsValid(true);
     }
   }, [value, required, setIsValid]);
 

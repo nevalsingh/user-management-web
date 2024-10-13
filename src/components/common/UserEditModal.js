@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Typography,
-  Button,
-  Box,
-  CircularProgress,
-} from '@mui/material';
+import { Typography, Button, Box, CircularProgress } from '@mui/material';
 import { toast } from 'react-toastify';
 import api from '../../services/user-management/api';
 import EmailInput from '../input/EmailInput';
@@ -42,20 +37,24 @@ function UserEditModal({ user, onUpdate, onClose }) {
         Edit User
       </Typography>
       <UsernameInput
-          value={formData.username}
-          onChange={handleChange}
-          setIsValid = {setIsUsernameValid}
-        />
-        <EmailInput
-          value={formData.email}
-          onChange={handleChange}
-          setIsValid={setIsEmailValid}
-        />
+        value={formData.username}
+        onChange={handleChange}
+        setIsValid={setIsUsernameValid}
+      />
+      <EmailInput
+        value={formData.email}
+        onChange={handleChange}
+        setIsValid={setIsEmailValid}
+      />
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
         <Button onClick={onClose} sx={{ mr: 2 }}>
           Cancel
         </Button>
-        <Button variant="contained" onClick={handleSubmit} disabled={loading || !isEmailValid || !isUsernameValid}>
+        <Button
+          variant="contained"
+          onClick={handleSubmit}
+          disabled={loading || !isEmailValid || !isUsernameValid}
+        >
           {loading ? <CircularProgress size={24} /> : 'Save'}
         </Button>
       </Box>
