@@ -1,4 +1,3 @@
-// src/views/CaptureForm/CaptureForm.js
 import React, { useState } from 'react';
 import {
   Box,
@@ -74,7 +73,6 @@ function CaptureForm() {
           onChange={handleChange}
           required
         />
-        {/* Add other fields if necessary */}
         <Button
           variant="contained"
           type="submit"

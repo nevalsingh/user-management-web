@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-management-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-management-web
+  template:
+    metadata:
+      labels:
+        app: user-management-web
+    spec:
+      containers:
+        - name: user-management-web
+          image: user-management-web:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: REACT_APP_API_BASE_URL
+              value: 'http://localhost:30033/api'

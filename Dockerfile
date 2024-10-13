@@ -6,6 +6,8 @@ COPY package*.json ./
 RUN npm install --legacy-peer-deps
 COPY . .
 
+COPY .env.k8s .env
+
 RUN npm run build
 
 FROM nginx:stable-alpine

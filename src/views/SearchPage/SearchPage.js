@@ -42,6 +42,20 @@ function SearchPage() {
       });
   };
 
+  const deleteUser = (userId) => {
+    api
+      .delete(`/users/${userId}`)
+      .then((response) => {
+        toast.success('User deleted successfully!');
+      })
+      .catch((error) => {
+        console.error('Failed to delete user:', error);
+        toast.error('Failed to delete user.');
+      });
+
+    searchUsers();
+  };
+
   const handleUserClick = (user) => {
     setSelectedUser(user);
   };
@@ -91,9 +105,7 @@ function SearchPage() {
                   <TableCell>{user.email}</TableCell>
                   <TableCell>
                     <Button onClick={() => handleUserClick(user)}>Edit</Button>
-                    <Button onClick={() => handleUserClick(user)}>
-                      Delete
-                    </Button>
+                    <Button onClick={() => deleteUser(user.id)}>Delete</Button>
                   </TableCell>
                 </TableRow>
               ))}
