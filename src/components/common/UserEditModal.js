@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import {
   Typography,
-  TextField,
   Button,
   Box,
   CircularProgress,
 } from '@mui/material';
 import { toast } from 'react-toastify';
 import api from '../../services/user-management/api';
+import EmailInput from '../input/EmailInput';
+import UsernameInput from '../input/UsernameInput';
 
 function UserEditModal({ user, onUpdate, onClose }) {
   const [formData, setFormData] = useState({ ...user });
   const [loading, setLoading] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,27 +41,21 @@ function UserEditModal({ user, onUpdate, onClose }) {
       <Typography variant="h6" gutterBottom>
         Edit User
       </Typography>
-      <TextField
-        label="Username"
-        name="username"
-        fullWidth
-        margin="normal"
-        value={formData.username}
-        onChange={handleChange}
-      />
-      <TextField
-        label="Email"
-        name="email"
-        fullWidth
-        margin="normal"
-        value={formData.email}
-        onChange={handleChange}
-      />
+      <UsernameInput
+          value={formData.username}
+          onChange={handleChange}
+          setIsValid = {setIsUsernameValid}
+        />
+        <EmailInput
+          value={formData.email}
+          onChange={handleChange}
+          setIsValid={setIsEmailValid}
+        />
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
         <Button onClick={onClose} sx={{ mr: 2 }}>
           Cancel
         </Button>
-        <Button variant="contained" onClick={handleSubmit} disabled={loading}>
+        <Button variant="contained" onClick={handleSubmit} disabled={loading || !isEmailValid || !isUsernameValid}>
           {loading ? <CircularProgress size={24} /> : 'Save'}
         </Button>
       </Box>

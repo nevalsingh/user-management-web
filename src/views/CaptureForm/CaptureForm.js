@@ -8,6 +8,8 @@ import {
 } from '@mui/material';
 import { toast } from 'react-toastify';
 import api from '../../services/user-management/api';
+import EmailInput from '../../components/input/EmailInput';
+import UsernameInput from '../../components/input/UsernameInput';
 
 function CaptureForm() {
   const [formData, setFormData] = useState({
@@ -16,6 +18,9 @@ function CaptureForm() {
     email: '',
   });
   const [loading, setLoading] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,14 +49,10 @@ function CaptureForm() {
         Capture New User
       </Typography>
       <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 400 }}>
-        <TextField
-          label="Username"
-          name="username"
-          fullWidth
-          margin="normal"
+        <UsernameInput
           value={formData.username}
           onChange={handleChange}
-          required
+          setIsValid = {setIsUsernameValid}
         />
         <TextField
           label="Password"
@@ -63,20 +64,15 @@ function CaptureForm() {
           onChange={handleChange}
           required
         />
-        <TextField
-          label="Email"
-          name="email"
-          type="email"
-          fullWidth
-          margin="normal"
+        <EmailInput
           value={formData.email}
           onChange={handleChange}
-          required
+          setIsValid={setIsEmailValid}
         />
         <Button
           variant="contained"
           type="submit"
-          disabled={loading}
+          disabled={loading || !isEmailValid || !isUsernameValid}
           sx={{ mt: 2 }}
         >
           {loading ? <CircularProgress size={24} /> : 'Capture'}
