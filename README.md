@@ -35,6 +35,11 @@ docker build -t user-management-web .
 docker run -p 3000:80 user-management-web
 ```
 
+### K8s
+```
+kubectl apply -f k8s/
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
