@@ -40,6 +40,17 @@ docker run -p 3000:80 user-management-web
 kubectl apply -f k8s/
 ```
 
+### Jest/Unit Testing
+```
+npm test
+```
+
+### Cypress
+```
+npx cypress open
+```
+
+
 ## Available Scripts
 
 In the project directory, you can run:
