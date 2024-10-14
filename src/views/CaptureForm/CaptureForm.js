@@ -71,6 +71,7 @@ function CaptureForm() {
         <Button
           variant="contained"
           type="submit"
+          data-cy="capture-button" // Ensure this attribute is present
           disabled={loading || !isEmailValid || !isUsernameValid}
           sx={{ mt: 2 }}
         >

@@ -22,7 +22,9 @@ describe('HomePage Int Test', () => {
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 
     await waitFor(() => expect(api.get).toHaveBeenCalledWith('/users/count'));
-    await waitFor(() => expect(screen.getByText(/Total Users: 100/i)).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText(/Total Users: 100/i)).toBeInTheDocument()
+    );
   });
 
   test('displays error when getting user count fails', async () => {
@@ -38,6 +40,10 @@ describe('HomePage Int Test', () => {
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 
     await waitFor(() => expect(api.get).toHaveBeenCalledWith('/users/count'));
-    await waitFor(() => expect(screen.getByText(/Failed to fetch total users/i)).toBeInTheDocument());
+    await waitFor(() =>
+      expect(
+        screen.getByText(/Failed to fetch total users/i)
+      ).toBeInTheDocument()
+    );
   });
 });

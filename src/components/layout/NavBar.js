@@ -31,7 +31,13 @@ function NavBar() {
     <div>
       <Toolbar />
       <List>
-        <ListItem button component={Link} to="/" onClick={handleDrawerToggle}>
+        <ListItem
+          button
+          component={Link}
+          to="/"
+          onClick={handleDrawerToggle}
+          data-cy="nav-home"
+        >
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
